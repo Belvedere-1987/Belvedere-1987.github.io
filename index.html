@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
 		<title> Charles R. Johnson</title>
 		<Meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="./stylesheet/Portfolio_CSS.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheet/Portfolio_CSS.css">
+        <script src="js/portfolio.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     </head>
     <!--Body-->
 	    <body class="Background">
+        <script>
+            document.body.className += ' fade-out';
+                $(function(){
+                    $('body').removeClass('fade-out');
+                    }
+                );    
+            
+        </script>
             <!--Navbar-->
                     <div class="Navbar">
                                 <a class="home_button" href="#Home">Home</a>
+                                <a href="#Slideshow">Slideshow</a>
                                 <a href="#About">About</a>
                                 <a href="#Github">GitHub</a>
-                                <a href="#Contact">Contact</a>              
+                                <a onclick="bringUpContact()">Contact</a>              
                     </div>
-    <!--Home-->
+    
+            
+                    <!--Home-->
+
                     <br>
                     <br>
     <!--Video-->
@@ -25,19 +38,17 @@
                              Your browser does not support html videos   
                         </video>
                     </div>
-    <!--End Video-->
         <!--Video Text-->
                     <div class="Video_Text">
                         <h1 class="Name"> Charles Johnson's Portfolio</h1>
-                    <p>
-                            <center>
+                            <p>
+                                <center>
                                 <q> 
-                                The best programs are written so that computing machines <br>can perform them quickly 
-                                and so that human beings can understand them clearly. A programmer is ideally an essayist <br>
-                                who works with traditional aesthetic and literary forms <br>as well as mathematical concepts,                                 to communicate the way that an algorithm works and to convince a reader that the results <br>
-                                will be correct.
-                                </q>  
-                                -  Donald E. Knuth<br>    
+                                The best programs are written so that computing machines <br>
+                                can perform them quickly and so that human beings can understand them clearly.<br>
+                                A programmer is ideally an essayist who works with traditional aesthetic and literary forms <br>
+                                as well as mathematical concepts, to communicate the way that an algorithm works<Br>
+                                and to convince a reader that the results will be correct. </q>-  Donald E. Knuth<br>    
                                 <br>
                                 
                                 Hello, my name is Charles Johnson. <br><br>
@@ -45,10 +56,100 @@
                                 Here you will find my projects, experience, and how to contact me. 
                                 <br>Thank you for your time!
                                
-                            </center>
-                    </p>
-                </div>
+                                </center>
+                            </p>
+                     </div>
         <!--End Video Text-->
+<!---End Video-->
+    
+<!--Start Slideshow-->
+    <div id="Slideshow">
+        <div id="Slideshow_Background">
+            <div id="Slideshow_Container">
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">1 / 6</div>
+                        <img class="Slide_Show_Images" src="images/me.jpg" style="width:100%">
+                            <div class="slideText">I'm excited to work with you on your coding projects!</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">2 / 6</div>
+                        <img class="Slide_Show_Images" src="images/coding.jpg" style="width:100%">
+                            <div class="slideText">I'm trained in these coding languages:</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">3 / 6</div>
+                        <img class="Slide_Show_Images" src="images/html.png" style="width:100%">
+                            <div class="slideText">HTML5</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">4 / 6</div>
+                        <img class="Slide_Show_Images" src="images/css.jpg" style="width:100%">
+                            <div class="slideText">CSS</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">5 / 6 </div>
+                        <img class="Slide_Show_Images" src="images/javascript.png" style="width:100%">
+                            <div class="slideText">JavaScript</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="Slide_Number">6 / 6</div>
+                      <img class="Slide_Show_Images" src="Images/phone.jpg" style="width:100%">
+                        <div class="slideText"> 
+                          <a onclick="bringUpContact()" href="#Contact" style="color:white;">Contact me today!</a>
+                        </div>
+                  </div>
+
+                
+                    <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+        <br>
+        <div style="text-align:center">
+
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+        
+        </div>
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 1;
+          showSlides(slideIndex);
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+      </script>
+    
     <!---About section-->
         <div class="Row" id="About">
             <div class="Column_2"><!--Left column-->
@@ -83,27 +184,27 @@
             </video></a>
         </div>
     </div>
+
 <!--End GitHub section-->
 
 <!--Contact Section-->
-    <div class="Row" id="Contact">
-        <div class="Column_3"><!--Contact image,left column-->
-            <img src="./images/phone.jpg"alt="Contact_Image">
-        </div>
+    <div id="Contact">
+        <button onclick="bringUpContact()" class="contact_btn">Contact</button>
+        <div class="contactForm" id="form"><!-- Contact form,right "column"-->
+            <form action="" method="get" class="formContainer"><!--what should i do with this?-->
+               <h1>Contact</h1>
+                <label for="name">Name:</label>
+                    <input tye="text" placeholder="Please enter your name here" name="name" required><br>
+                <label for="phone">Phone:</label>
+                    <input tye="text" placeholder="Please enter your phone number here"><br>
+                 <label for="email">Email:</label>
+                    <input tye="text" placeholder="Please enter your email here"name="email"required><br>
+                <label for="message">Message:</label>
+                    <input tye="text" placeholder="Enter your message here...."><br>
 
-        <div class="Column_4"><!-- Contact form,right "column"-->
-            <h1>Contact</h1>
-                <form action="" method="get"><!--what should i do with this?-->
-                    <label>Name:</label><br>
-                        <input tye="text" placeholder="Please enter your name here"><br>
-                    <label>Email:</label><br>
-                        <input tye="text" id="Email" name="Email" placeholder="Please enter your name here"><br>
-                    <label>Message:</label><br>
-                        <input tye="text" id="Message" name="Message" placeholder="Please write your message here">
-                        <input type="submit" value="Submit">
-                </form>
-           
-
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn_close" onclick="closeForm()">&times;</button>
+            </form>
         </div>
     </div>
 <!--Footer section-->

@@ -1,6 +1,19 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0%;
+    opacity: 1;
+    transition: 3.5s opacity;
+    letter-spacing: .1vw;
+    font-size: 1.25vw;
           }
+
+body.fade-out {
+    opacity: .1;
+    transition: none;
+}
 
 /******Navbar******/
 
@@ -10,38 +23,71 @@ body {
     position:fixed;
     top:0;
     width: 100%;
-    height:6%;
-    z-index:1;
-    border-bottom:1px solid black;
+    z-index:100;
+        -webkit-animation: moveBar 4s;
+        animation: moveBar 4s; 
         }
 
 .Navbar a{
     float: left; 
     display: block;
     color: wheat;
-    padding: 6px 6px;
+    padding: .75vw 1vw;
     text-decoration: none;
     font-family: 'Garamond', 'Helvetica';
-    font-size: 22px;
+    font-size: 1.5vw;
     text-align: center;
     font-weight: bold;
+    position: relative; 
     height:100%;
+    text-align: center;
+    position: relative;
+    letter-spacing: .1vw;
+    -webkit-animateion: movenavText 4.75s; 
+    animation: movenavText 4.75s; 
 }
 
 
 .Navbar a:hover {
     background-color:ivory;
     color: black;
-    border: 3px solid ivory;
+    }
+
+.Navbar a.active{
+    background-color: darkgray;
+}
+
+@keyframes zoominoutsinglefeatured{
+    0% {
+        transform: scale(1.5,1.5);
+    }
+    100%{
+        transform: scale(1,1);
+    }
 }
 
 .Navbar a.home_button{
     background-color: wheat;
     color: #334d4d;
-    height:100%
-      }
+          }
+
 .Navbar a.home_button:hover {
-    border:3px solid wheat;
+    border:1px solid wheat;
+}
+
+@keyframes moveBar{
+    from {left: -100vw;}
+    to {left: 0vw;}
+}
+
+@keyframes movenavText {
+    from {top: -100vw;}
+    to {top: 0vw;}
+}
+
+@keyframes movevideoText{
+    from {top: -100vw;}
+    to {top: 0vw;}
 }
 
 /******END Navbar******/
@@ -54,7 +100,10 @@ body {
     left: 0;
     top:0;
     min-width:100%;
-       z-index: -2;}
+    min-height:100%;
+    z-index: -2;
+    animation: zoominoutsinglefeatured 5s;
+}
 
 .Video_Text {
     background:  rgba(0,0,0,0.75); 
@@ -66,8 +115,115 @@ body {
     margin-right: auto;
     margin-top: 10%; 
     margin-bottom: 10%;
-    padding: 25px;
+    padding: 1vw;
+    position: relative; 
     font-family: 'Garamond', 'Helvetica';
+    -webkit-animation: movevideoText 4s;
+    animation: movevideoText 4s;
+}
+
+#Slideshow_Background {
+    background-color: rgba(255,255,255,0.35);
+}
+.mySlides {
+    display: none; 
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+#Slideshow_Container{
+    width: 39.5vw;
+    height: auto;
+    padding-top: 4%;
+    position: relative; 
+    margin: auto; 
+    }
+
+.Slide_Show_Images {
+    vertical-align: middle; 
+    height: 35vw; 
+    width: auto;
+    box-shadow: 0px 5px 10px 12px rgba(0,0,0,0.75);
+    object-fit: contain;
+    }
+
+.Previous, .Next{
+    cursor: pointer; 
+    position: absolute; 
+    top: 50%;
+    width: auto; 
+    padding: 2vw; 
+    margin-top:-0vw; 
+    color: darkgray; 
+    font-weight: bold; 
+    font-size: 1.5vw; 
+    border-radius: 0 3px 3px 0;
+    user-select: none; 
+    transition: 0.6s ease; 
+}
+
+.Next{
+    right: 0;  
+    border-radius: 3px 0 0 3px; 
+}
+
+.Previous:hover, .Next:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: white; 
+}
+
+.slideText{
+    color: white; 
+    padding: 1vw; 
+    position: absolute; 
+    bottom: 0; 
+    width: 100%; 
+    text-align: center; 
+    letter-spacing: .1vw; 
+    font-size: 1.5vw; 
+    background-color: rgba(0,0,0,0.75);
+    font-weight: bold; 
+    border-radius: 7px 7px 7px 7px; 
+}
+
+.Slide_Number{
+    color: white; 
+    position: absolute; 
+    top: 0; 
+    letter-spacing: .1vw; 
+    font-size: 1.5vw; 
+    font-weight: bold; 
+    display: none; 
+}
+
+.dot{
+    cursor: pointer; 
+    height: 1vw; 
+    width: 1vw; 
+    margin: .25vw; 
+    background-color: white; 
+    border-radius: 50%; 
+    display: inline-block; 
+    transition: background-color 0.6s ease; 
+    position: relative; 
+    }
+
+.active, .dot:hover {
+    background-color: black; 
+}
+
+.fade{
+    -webkit-animation-name: fade; 
+    -webkit-animation-duration: 1.5s; ;
+    animation-name: fade; 
+    animation-duration: 1.5s; 
 }
 
 * {
@@ -75,6 +231,7 @@ body {
 }
 
 .Column_1 {
+    position:relative;
     float: left;
     width: 50%;
     padding: 10px;
@@ -82,9 +239,11 @@ body {
     height:400px;
     background-color: #4d4d4d;
     color: white;
-    border: 1px solid silver
+    border: 1px solid silver;
+    z-index: 50;
 }
 .Column_2 {
+    position:relative;
     float: left;
     width: 50%;
     padding: 10px;
@@ -92,27 +251,10 @@ body {
     height: 400px;
     background-color: black;
     border: 1px solid silver;
-}
-.Column_3{
-    float:left;
-    width: 50%;
-    padding: 10px;
-    padding-top: 3.5%;
-    height: 500px;
-    background-color: black;
-    border: 1px solid silver;
+    z-index: 50; 
 }
 
-.Column_4 {
-        float: left;
-        width: 50%;
-        padding: 10px;
-        padding: 3%;
-        height:500px;
-        background-color: #4d4d4d;
-        color: white;
-        border: 1px solid silver
-}
+
 
 .Row:after {
     content:"";
@@ -126,6 +268,7 @@ body {
     text-align: center;
     margin-top:3%;
     color: ivory;
+    font-size: 3vw; 
 }
 
 h1 {
@@ -139,18 +282,17 @@ h1 {
 p{
     font-family: 'Garamond', 'Helvetica';
     text-align: justify;
-    letter-spacing: 1px;
-    font-size:20px;
-    padding-left:20px;
-    padding-right: 20px;
+    font-size:1.5vw;
+    padding-left:1vw;
+    padding-right: 1vw;
 }
 center {
     font-family: 'Garmond', 'Helvetica';
     text-align:center;
     letter-spacing: 1px;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right:20px;
+    font-size: 1.5vw;
+    padding-left: 5vw;
+    padding-right:5vw;
 }
 
 
@@ -161,8 +303,8 @@ a{
 
 q{
     font-style: italic;
-    
 }
+
 .Column_2 video, img {
     border-radius: 8px;
     max-width: 100%;
@@ -173,10 +315,14 @@ q{
     filter: grayscale(90%);
 }
 
+label {
+    font-family: 'Garmond', 'Helvetica';
+    font-weight: bold;
+}
 input {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 2%;
@@ -184,13 +330,15 @@ input {
     resize: vertical;
     font-family: 'Garmond', 'Helvetica';
     font-weight: bold;
+    background-color: white;
         }
 
-input[type=submit] {
-    width: 50%;
-    background-color: black; 
+.btn {
+    width: 80%;
+    background-color: #334d4d; 
     color: white; 
     font-weight: bold; 
+    font-size: 1.5vw ;
     padding: 12px 20px;
     border: none; 
     border-radius: 4px;
@@ -199,30 +347,81 @@ input[type=submit] {
     margin-left: auto; 
     margin-right: auto;
     margin-top: 25px;
-    font-family: 'Garmond', 'Helvetica'
-}
-
-label {
     font-family: 'Garmond', 'Helvetica';
-    font-weight: bold;
 }
 
-input[type=submit]:hover {
-    background-color: white;
-    color: black; 
+.contact_btn{
+        bottom: .75vw;
+        right: 1.75vw;
+        width: 25vw;  
+        background-color:#334d4d;
+        color: wheat;
+        border: 2px solid black;
+        height: 3vw;
+        cursor: pointer;
+        position: fixed;
+        -webkit-animation: movePopup 5s;
+        animation: movePopup 5s;
+        font-size: 1.5vw;
+        font-weight: bold;
+        z-index: 1;
+}
+
+.contact_btn:hover {
+        background-color:black; 
+        color: white;
+        transform: scale(1.1);   
+        transition: transform 1s;
+        }
+
+@keyframes movePopup {
+    from {bottom: -5vw;}
+    to {bottom: .75vw;}
+}
+
+.btn:hover {
+    background-color: black;
+    color: white; 
     font-weight: bold; 
-    transform: scale(1.5);
+    transform: scale(1.1);
+    transition: transform 1.5s;     
+}
+
+.btn_close {
+    background-color: lightgray; 
+    color: white; 
+    font-weight: bold; 
+    position: absolute;
+    top: 1%; 
+    right: 1%;
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw; 
+    border-radius: 10px; 
+}
+
+.btn_close:hover {
+    background-color: darkred; 
+    color: white; 
+    transform: scale(1.1);
     transition: transform 1.5s; 
 }
+#form {
+    display: none;
+    border-radius: 5px; 
+    width:50%;
+    padding: 15px;
+    bottom: 8px;
+    right: 12px;
+    position: fixed;
+    font-family:"Garmond", Helvetica,;
+    color: #334d4d;
+    background-color: wheat;
+    z-index: 75;
+}
 
-form {
-display: block;
-border-radius: 10px; 
-background-color: wheat;
-padding: 15px; 
-margin-bottom: 75px;
-font-family:"Garmond", Helvetica,;
-color: black;
+#form h1{
+    color: #334d4d;
 }
 
 footer{
@@ -240,7 +439,7 @@ img:hover {
     filter: grayscale(60%);
 }
 
-video:hover {
+.Column_2 video:hover {
     transition: transform 1s;
     transform: scale(1.1);
 }

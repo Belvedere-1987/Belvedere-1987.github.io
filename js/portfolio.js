@@ -19,6 +19,8 @@ $(document).ready(function(){
 function bringUpContact() {
     document.getElementById("form").style.display="block";
 }
+
+
 function closeForm() {
     document.getElementById("form").style.display="none";
     this.Close();
